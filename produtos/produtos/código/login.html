@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<header>
+    <div class="containerHeader">
+        <h1 class="descicaoLogo"><a href="index.html">Nome Empresa</a></h1>
+    </div>
+</header>
+<div class="main-box">
+    <div class="container">
+        <div class="wrapper">
+            <div class="flat-form">
+                <ul class="tabs">
+                    <li>
+                        <a href="#usuarioComum" class="active" onclick="alterarTipoLogin(this);">Usuário</a>
+                    </li>
+                    <li>
+                        <a href="#areaAdministrativa" class="" onclick="alterarTipoLogin(this);">Administrador</a>
+                    </li>
+                </ul>
+                <h2 id="titulo">Login Usuário</h2>
+
+                <form>
+                    <div class="linha">
+                        <input class="formTag" id="email" name="email" type="text" placeholder="Email"
+                               style="width: 97%;"/>
+                        <input class="formTag" id="senha" name="senha" type="password" placeholder="Senha"
+                               style="width: 97%;"/>
+                        <input type="button" value="ENTRAR" class="button" style="cursor: pointer;"/>
+                                    <span id="opcaoCadastrar" class="show">Ainda não possui cadastro? <a
+                                            href="cadastro.html">Clique
+                                        aqui</a></span>
+                        <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="1">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <span>© 2015 Nome | Controle Energia</span>
+</footer>
+<script src="js/login.js"></script>
+</body>
+</html>
