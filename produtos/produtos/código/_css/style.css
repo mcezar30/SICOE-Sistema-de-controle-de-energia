@@ -21,7 +21,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section, summary,
+footer, header, /*hgroup,*/ menu, nav, section, summary,
 time, mark, audio, video {
     margin:0;
     padding:0;
@@ -41,7 +41,7 @@ body {
 }
 
 article,aside,canvas,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section,summary { 
+footer,header,/*hgroup,*/menu,nav,section,summary {
     display:block;
 }
 
@@ -133,11 +133,22 @@ input, select {
 /* `Grid >> Global
 ----------------------------------------------------------------------------------------------------*/
 
-
+.grid_1,
 .grid_2,
 .grid_3,
 .grid_4,
-.grid_6 {
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16 {
 	display: inline;
 	float: left;
 	margin-left: 10px;
@@ -185,6 +196,13 @@ input, select {
 /* `Grid >> Children (Alpha ~ First, Omega ~ Last)
 ----------------------------------------------------------------------------------------------------*/
 
+.alpha {
+	margin-left: 0;
+}
+
+.omega {
+	margin-right: 0;
+}
 
 /* `Grid >> 12 Columns
 ----------------------------------------------------------------------------------------------------*/
