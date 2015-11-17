@@ -7,11 +7,23 @@
                         <nav id="main-nav" class="grid_6">
                             <h1>Main page navigation</h1>
                             <ul>
-                              <li class="index.php"><a href="index.php">Home</a></li>
-                              <li><a href="Produtos.php">Produtos</a></li>
-                              <li><a href="#">Descrição</a></li>
-                              <li><a href="#">Contact</a></li>
-                              <li><a href="login.php">Login</a></li>
+                                <?php
+                                $login = isset($_SESSION['USUARIOLOGADO']) ? 0: 1;
+                                if ($login == 0) {
+                                    echo "<li class='index.php'><a href='index.php'>Home</a></li>";
+                                    echo "<li><a href='Produtos.php'>Produtos</a></li>";
+                                    echo "<li><a href='#'>Descrição</a></li>";
+                                    echo "<li><a href='#'>Contact</a></li>";
+                                    echo "<li><a href='login.php'>Login</a></li>";
+                                }else{
+                                    echo "<li class='index.php'><a href='index.php'>Home</a></li>";
+                                    echo "<li><a href='Produto.php'>Produtos</a></li>";
+                                    echo "<li><a href='Administrativa.php'>Gerencial</a></li>";
+                                    echo "<li><a href='perfilConsumo.php'>Perfil</a></li>";
+                                    echo "<li><a href='sair.php'>Sair</a></li>";
+                                }
+                                ?>
+
                             </ul>
                         </nav>
                     </header>

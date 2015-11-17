@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class Login{
     private $nome;
     private $cpf;
@@ -45,15 +45,19 @@ class Login{
 
                 if ($linha){
                     if ($this->senha == $linha['PASUSU']){
-
+                        $_SESSION["USUARIOLOGADO"] = $_POST["email"];
                         header("Location:../index.php");
                     }
                     else {
                         $msg = "Nome de usuário ou senha incorretos.";
+                        self::popupJs($msg);
+                        header("Location:../login.php");
                     }
                 }
                 else {
                     $msg = "Esse usuário não está cadastrado";
+                    self::popupJs($msg);
+                    header("Location:../login.php");
                 }
                 $stmt->close();
             }
@@ -61,6 +65,11 @@ class Login{
         }catch(\Exception $e){
 
         }
+    }
+    public static function popupJs($imprime){
+        echo"<script type='text/javascript'>";
+        echo "alert(" . $imprime . ")";
+        echo "</script>";
     }
 
 }

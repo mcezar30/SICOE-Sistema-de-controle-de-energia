@@ -15,7 +15,7 @@ header, nav, footer, article, section, aside {
 #hfwrap2 {
     height:400px;
     width:100%;
-    position:absolute; 
+    position:absolute;
     background:transparent url(img/large-phone.png) no-repeat 80% 0;
 }
 #hfwrap3 {
@@ -81,7 +81,6 @@ a:hover {
 /* @header
 =======================*/
 #logo {
-    background:transparent url(img/logo-site-hl2.png) no-repeat;
     text-indent:-7777em;
 }
 #logo a {
@@ -152,7 +151,7 @@ a:hover {
 .product p {
     font:normal 12px/1.5 Tahoma, Geneva, sans-serif;
     color:#4f4f4f;
-    padding:0 0 20px 0;
+    padding:0 0 12px 0;
 }
 #more-products span {
     display:block;
@@ -231,7 +230,7 @@ a:hover {
     
 #footerwrap {
     width:100%; 
-    background:transparent url(img/footer-bg.jpg) no-repeat; 
+    background:transparent url(img/footer-bg.jpg) no-repeat;
     height:200px;
     border-top:1px solid #fff;
 }
