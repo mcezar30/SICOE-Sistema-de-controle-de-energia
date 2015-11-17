@@ -2,7 +2,7 @@
 
 use sicoe_tek\repositorio\Produto;
 
-class Facade{
+class Administrativa{
     private $nome;
     private $descricao;
     private $voltagem;
@@ -15,43 +15,9 @@ class Facade{
         $this->voltagem = $_POST["voltagem"];
         $this->potencia = $_POST["potencia"];
         $this->standby = $_POST["standby"];
-       // $this->foto = $_POST["foto"];
+        $this->foto = "img/produto/".$_POST["foto"];
     }
-   /* public function insereProduto(){
-        try{
-          //  Produto::insereProduto($this->nome, $this->descricao, $this->voltagem,
-           //     $this->potencia, $this->standby, $this->foto);
-           // require_once("conexaoBD.php");
-           // die();
-            $bdhost = "localhost";
-            $bdusuario = "root";
-            $bdsenha = "";
-            $baseDados = "sicoe";
 
-            // Cria a conexão
-            //mySQLi, ORIENTADA A OBJETOS
-            $conn = new mysqli($bdhost, $bdusuario, $bdsenha, $baseDados);
-            $conn->set_charset('utf8');
-            // Verifica conexão
-            if ($conn->connect_error) {
-                die("Conexão ao MySQL falhou: " . $conn->connect_error);
-            }
-
-            $sql = "INSERT INTO PRODUTO (NOMPRO, DESPRO, POTPRO, POTSBYPRO, VOLPRO)
-                    VALUES (?, ?, ?, ?, ?)";
-
-            $stmt = $conn->prepare($sql);
-            echo $stmt;
-            if ($stmt) {
-                $stmt->bind_param('ssddd', $this->nome, $this->descricao, $this->potencia, $this->standby, $this->voltagem);
-                $stmt->execute();
-                $conn->close();
-            }
-
-        }catch(\Exception $e){
-
-        }
-    }*/
     public function abreConexao(){
         $bdhost = "localhost";
         $bdusuario = "root";
@@ -68,28 +34,47 @@ class Facade{
 
     public function insereProduto(){
         try{
-            //  Produto::insereProduto($this->nome, $this->descricao, $this->voltagem,
-            //     $this->potencia, $this->standby, $this->foto);
-             /*require_once("../conexaoBD.php");
-             die();*/
+
             $conn = self::abreConexao();
 
-            $sql = "INSERT INTO PRODUTO (NOMPRO, DESPRO, POTPRO, POTSBYPRO, VOLPRO)
-                    VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO PRODUTO (NOMPRO, DESPRO, IMGPRO,  VOLPRO)
+                    VALUES (?, ?, ?, ?)";
 
             $stmt = $conn->prepare($sql);
             if (!($stmt = $conn->prepare($sql))) {
                 echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
             }
 
-            if (!$stmt->bind_param("ssddd", $this->nome, $this->descricao, $this->potencia, $this->standby, $this->voltagem)) {
+            if (!$stmt->bind_param("sssd", $this->nome, $this->descricao, $this->foto, $this->voltagem)) {
                 echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
             }
 
             if (!$stmt->execute()) {
                 echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
             }
+//--------------------
+            $sqlpro = "SELECT MAX(CODPRO) AS CODPRO FROM PRODUTO;";
+            $resultpro = $conn->query($sqlpro);
+            $codigo = 0;
+            while($row = $resultpro->fetch_assoc()){
+                $codigo = $row['CODPRO'];
+            }
+            $sqlgra = "INSERT INTO GRANDEZAPRODUTO (POTPRO, POTSBYPRO, CODPRO)
+                    VALUES (?, ?, ?)";
 
+            $stmtgra = $conn->prepare($sqlgra);
+            if (!($stmtgra = $conn->prepare($sqlgra))) {
+                echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
+            }
+
+            if (!$stmtgra->bind_param("ddi", $this->potencia, $this->standby, $codigo)) {
+                echo "Binding parameters failed: (" . $stmtgra->errno . ") " . $stmtgra->error;
+            }
+
+            if (!$stmtgra->execute()) {
+                echo "Execute failed: (" . $stmtgra->errno . ") " . $stmtgra->error;
+            }
+            $stmtgra->close();
             $stmt->close();
             header("Location:../Administrativa.php");
 
@@ -98,13 +83,9 @@ class Facade{
         }
     }
 
-    public static function popupJs($imprime){
-        echo"<script type='text/javascript'>";
-        echo "alert('O valor passado foi ' + " . $imprime . ")";
-        echo "</script>";
-    }
+
 }
 
-$adm = new Facade();
+$adm = new Administrativa();
 $adm->insereProduto();
 ?>

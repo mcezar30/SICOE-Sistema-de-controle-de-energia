@@ -23,7 +23,7 @@ include("header.php")
 ?>
 <header>
     <div class="containerHeader">
-        <h1 class="descicaoLogo"><a href="index.html">Nome Empresa</a></h1>
+        <h1 class="descicaoLogo"><a href="index.html">SICOE</a></h1>
     </div>
 </header>
 <div class="main-box">

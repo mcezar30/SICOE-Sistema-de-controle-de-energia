@@ -24,15 +24,15 @@ class Facade{
 
     public function excluirProduto(){
         try{
-            //  Produto::insereProduto($this->nome, $this->descricao, $this->voltagem,
-            //     $this->potencia, $this->standby, $this->foto);
-             /*require_once("../conexaoBD.php");
-             die();*/
             $conn = self::abreConexao();
+            $sqlgrandeza = "DELETE FROM GRANDEZAPRODUTO WHERE CODPRO = ?";
             $sql = "DELETE FROM PRODUTO WHERE CODPRO = ?";
 
+            $stmtgrandeza = $conn->prepare($sqlgrandeza);
             $stmt = $conn->prepare($sql);
             if ($stmt){
+                $stmtgrandeza->bind_param('i', $this->codigo);
+                $stmtgrandeza->execute();
                 $stmt->bind_param('i', $this->codigo);
                 $stmt->execute();
                 if(!$stmt->errno){

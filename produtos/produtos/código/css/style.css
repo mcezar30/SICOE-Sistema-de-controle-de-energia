@@ -107,6 +107,7 @@ hr {
     padding:0;
 }
 
+
 input, select {
     vertical-align:middle;
 }
@@ -688,6 +689,12 @@ input, select {
 	left: -900px;
 }
 
+.container_perfil {
+	float: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 320px;
+}
 /* `Clear Floated Elements
 ----------------------------------------------------------------------------------------------------*/
 
@@ -724,3 +731,135 @@ input, select {
 	zoom: 1;
 }
 
+#listaProd {
+	position: relative;
+	width: 300px;
+	height: 120px;
+	top: 15%;
+	left: 10%;
+}
+
+.lista{
+	position: absolute;
+	width: 90px;
+	right: 20%;
+}
+
+
+#linhapopup {
+	display:block;
+	height:0.2px;
+	border:0;
+	border-top:1px solid #cccccc;
+	margin:1em 0;
+	padding:0;
+}
+
+.produto_popup {
+	position: relative;
+	display:inline-block;
+}
+
+
+.button {
+	border: none;
+	display: block;
+	background: #136899;
+	height: 44px;
+	width: 100%;
+	padding-left: 15px;
+	color: #ffffff;
+	text-align: center;
+	transition: all 0.15s linear;
+	margin-bottom: 15px;
+}
+
+.Carrinho {
+	height: 22px;
+}
+
+.button:hover {
+	background: #1e75aa;
+}
+
+.button:active {
+	background: #136899;
+}
+
+.clearPerfil:after {
+	clear: both;
+	content: ' ';
+	display: inline;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.cont {
+	float: left;
+	margin-left: 300px;
+	margin-right: auto;
+	width: 960px;
+}
+
+#popup {
+	position: absolute;
+	width: 180px;
+	height: 140px;
+	top: 15%;
+	left: 13%;
+}
+
+.listapop{
+	position: absolute;
+	alignment: center;
+	width: 205px;
+
+}
+
+.btnCar {
+	height: 22px;
+}
+
+
+.add {
+	display: inline-block;
+	width: 45%;
+	padding:6px 4px;
+	left: 10px;
+}
+
+.rmv {
+	display: inline-block;
+	width: 45%;
+	padding:6px 4px;
+	right: 10px;
+
+}
+
+#campodisable {
+	position: relative;
+	display: inline;
+	text-align: left;
+	width: 180px;
+}
+
+#estimativa {
+	position: relative;
+	width: 250px;
+	height: 70px;
+	top: 15%;
+	left: 10%;
+}
+
+.estima {
+	width: 960px;
+	margin-left: 300px;
+	margin-right: auto;
+}
+
+#section-estimativa{
+	height: 200px;
+}

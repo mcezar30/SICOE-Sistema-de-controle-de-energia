@@ -5,7 +5,7 @@ header, nav, footer, article, section, aside {
 
 #main-header #logo {height:70px;}
 #main-header #main-nav {height:70px;}
-#more-products {height:360px;}
+#more-products {height:200px;}
 #more-blurb #blurb {height:320px;}
 #more-blurb #blog {height:320px;}
 #main-footer {height:200px;}
@@ -15,8 +15,8 @@ header, nav, footer, article, section, aside {
 #hfwrap2 {
     height:400px;
     width:100%;
-    position:absolute; 
-    background:transparent url(img/large-phone.png) no-repeat 80% 0; 
+    position:absolute;
+    background:transparent no-repeat 80% 0;
 }
 #hfwrap3 {
     height:390px; 
@@ -81,7 +81,6 @@ a:hover {
 /* @header
 =======================*/
 #logo {
-    background:transparent url(img/logo-site-hl.png) no-repeat;
     text-indent:-7777em;
 }
 #logo a {
@@ -152,7 +151,7 @@ a:hover {
 .product p {
     font:normal 12px/1.5 Tahoma, Geneva, sans-serif;
     color:#4f4f4f;
-    padding:0 0 20px 0;
+    padding:0 0 12px 0;
 }
 #more-products span {
     display:block;

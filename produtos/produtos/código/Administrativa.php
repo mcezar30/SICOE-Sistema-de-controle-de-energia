@@ -13,7 +13,12 @@
 <?php
 require_once("conexaoBD.php");
 //$conn = self::abreConexao();
-$sql = "SELECT CODPRO, NOMPRO, DESPRO, VOLPRO, POTPRO, POTSBYPRO FROM PRODUTO";
+$sql = "SELECT DISTINCT(P.CODPRO), P.NOMPRO, P.DESPRO, P.VOLPRO, GP.POTPRO, GP.POTSBYPRO
+          FROM PRODUTO P, GRANDEZAPRODUTO GP
+         WHERE P.CODPRO = GP.CODPRO
+         AND GP.POTPRO = (SELECT MAX(G.POTPRO) AS POTPRO
+         FROM GRANDEZAPRODUTO G
+         WHERE G.CODPRO = P.CODPRO)";
 //Uso da função query (sem parametrização - prepared statment)
 $result = $conn->query($sql);
 ?>
@@ -70,7 +75,6 @@ $result = $conn->query($sql);
                         <table class="table table-striped table-bordered table-condensed table-hover">
                             <thead>
                             <tr role="row">
-                                <th>Foto</th>
                                 <th>Aparelho</th>
                                 <th>Descrição</th>
                                 <th>Voltagem</th>
@@ -85,7 +89,6 @@ $result = $conn->query($sql);
                         <?php
                         if ($result->num_rows >0){
                             while($row = $result->fetch_assoc()){
-                                echo "<td style='vertical-align: middle;' class=' '>". "". "</td>";
                                 echo "<td style='vertical-align: middle;' class=' '>". $row['NOMPRO']. "</td>";
                                 echo "<td style='vertical-align: middle;' class=' '>". $row['DESPRO']. "</td>";
                                 echo "<td style='vertical-align: middle;' class=' '>". $row['VOLPRO']. "</td>";
