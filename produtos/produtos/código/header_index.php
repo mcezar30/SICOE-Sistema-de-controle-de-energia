@@ -8,8 +8,7 @@
                             <h1>Main page navigation</h1>
                             <ul>
                                 <?php
-                                $login = isset($_SESSION['USUARIOLOGADO']) ? 0: 1;
-                                if ($login == 0) {
+                                if (!isset($_SESSION['USUARIOLOGADO'])){
                                     echo "<li class='index.php'><a href='index.php'>Home</a></li>";
                                     echo "<li><a href='Produtos.php'>Produtos</a></li>";
                                     echo "<li><a href='#'>Descrição</a></li>";

@@ -45,7 +45,7 @@ class Login{
 
                 if ($linha){
                     if ($this->senha == $linha['PASUSU']){
-                        $_SESSION["USUARIOLOGADO"] = $_POST["email"];
+                        $_SESSION["USUARIOLOGADO"] = $linha['EMAUSU'];
                         header("Location:../index.php");
                     }
                     else {

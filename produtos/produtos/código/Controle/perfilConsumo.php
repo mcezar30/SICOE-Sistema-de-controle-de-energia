@@ -4,7 +4,7 @@ class Estimativa{
     private $email;
     private $produto;
     function __construct(){
-        $this->email = 'fkadosh@yahoo.com.br';
+        $this->email = $_SESSION["USUARIOLOGADO"];
         $this->produto = $_SESSION[$this->email];
     }
 
@@ -60,7 +60,7 @@ class Estimativa{
 
             $stmtestimativa = $conn->prepare($sqlestimativa);
             if ($sqlestimativa){
-                $stmtestimativa->bind_param('i', $this->email);
+                $stmtestimativa->bind_param('s', $this->email);
                 $stmtestimativa->execute();
                 $stmtestimativa->close();
             }
