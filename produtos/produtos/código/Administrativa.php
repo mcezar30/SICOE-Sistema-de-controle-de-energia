@@ -12,14 +12,14 @@
 
 <?php
 require_once("conexaoBD.php");
-//$conn = self::abreConexao();
+
 $sql = "SELECT DISTINCT(P.CODPRO), P.NOMPRO, P.DESPRO, P.VOLPRO, GP.POTPRO, GP.POTSBYPRO
           FROM PRODUTO P, GRANDEZAPRODUTO GP
          WHERE P.CODPRO = GP.CODPRO
          AND GP.POTPRO = (SELECT MAX(G.POTPRO) AS POTPRO
          FROM GRANDEZAPRODUTO G
          WHERE G.CODPRO = P.CODPRO)";
-//Uso da função query (sem parametrização - prepared statment)
+
 $result = $conn->query($sql);
 ?>
 
@@ -41,7 +41,7 @@ $result = $conn->query($sql);
         <div class="wrapper">
             <div class="preenchimentoFormulario">
                 <div class="full">
-                    <input type="button" value="INSERIR NOVO PRODUTO" class="button" style="cursor: pointer;"/>
+                    <a href='relatorio.php'><input type="button" value="Visualizar Relatorios" class="button" style="cursor: pointer;"/></a>
                 </div>
             </div>
         </div>
@@ -65,12 +65,7 @@ $result = $conn->query($sql);
         <div class="wrapper">
             <div class="preenchimentoFormulario">
                 <div class="full">
-                    <div class="linha">
-                        <input type="button" value="FILTRAR" class="button size1"
-                               style="cursor: pointer; float: right;"/>
-                        <input class="formAdm size3" name="filtro" type="text" placeholder="Filtro"
-                               style="float: right;"/>
-                    </div>
+
                     <div class="linha">
                         <table class="table table-striped table-bordered table-condensed table-hover">
                             <thead>
@@ -95,7 +90,7 @@ $result = $conn->query($sql);
                                 echo "<td style='vertical-align: middle;' class=' '>". $row['POTPRO']. "</td>";
                                 echo "<td style='vertical-align: middle;' class=' '>". $row['POTSBYPRO']. "</td>";
                                 echo "<td><a href='./Controle/Administrativa/excluir.php?CODPRO=".htmlspecialchars($row['CODPRO'])."'><button type=\button\>Excluir</button></a>";
-                                echo "&nbsp;&nbsp;<td><a href='./Controle/Administrativa/editar.php?CODPRO=".htmlspecialchars($row['CODPRO'])."'><button type=\button\>Editar</button></a></td></tr>";
+                                echo "&nbsp;&nbsp;<td><a href='./Controle/Administrativa/editar.php?CODPRO=".htmlspecialchars($row['CODPRO'])."'><button type=\button\></button></a></td></tr>";
                             }
                         }
                         ?>
